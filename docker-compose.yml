@@ -8,8 +8,9 @@ services:
       - "8000:8000"
     env_file:
       - .env
-    depends_on:
-      - mongo
+    # remove depends_on since we don't need local MongoDB
+    # depends_on:
+    #   - mongo
 
   frontend:
     build: ./frontend
@@ -19,13 +20,14 @@ services:
     depends_on:
       - api
 
-  mongo:
-    image: mongo:6.0
-    container_name: customer-segmentation-mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
+# We no longer need local MongoDB since we're using Atlas:
+# mongo:
+#   image: mongo:6.0
+#   container_name: customer-segmentation-mongo
+#   ports:
+#     - "27017:27017"
+#   volumes:
+#     - mongo_data:/data/db
 
-volumes:
-  mongo_data:
+# volumes:
+#   mongo_data:
