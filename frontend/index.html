@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Cluster Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h2 { color: #333; }
+    form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    label { font-size: 0.9em; }
+    input[type="number"] { width: 100%; padding: 5px; }
+    button { grid-column: span 2; padding: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+    #result { margin-top: 20px; font-size: 1.2em; color: #444; }
+  </style>
+</head>
+<body>
+  <h2>Customer Cluster Predictor</h2>
+  <form id="predictForm">
+    <label>Age: <input type="number" name="Age" required></label>
+    <label>Education: <input type="number" name="Education" required></label>
+    <label>Marital Status: <input type="number" name="Marital_Status" required></label>
+    <label>Parental Status: <input type="number" name="Parental_Status" required></label>
+    <label>Children: <input type="number" name="Children" required></label>
+    <label>Income: <input type="number" name="Income" required></label>
+    <label>Total Spending: <input type="number" name="Total_Spending" required></label>
+    <label>Days as Customer: <input type="number" name="Days_as_Customer" required></label>
+    <label>Recency: <input type="number" name="Recency" required></label>
+    <label>Wines: <input type="number" name="Wines" required></label>
+    <label>Fruits: <input type="number" name="Fruits" required></label>
+    <label>Meat: <input type="number" name="Meat" required></label>
+    <label>Fish: <input type="number" name="Fish" required></label>
+    <label>Sweets: <input type="number" name="Sweets" required></label>
+    <label>Gold: <input type="number" name="Gold" required></label>
+    <label>Web: <input type="number" name="Web" required></label>
+    <label>Catalog: <input type="number" name="Catalog" required></label>
+    <label>Store: <input type="number" name="Store" required></label>
+    <label>Discount Purchases: <input type="number" name="Discount_Purchases" required></label>
+    <label>Total Promo: <input type="number" name="Total_Promo" required></label>
+    <label>Num Web Visits Month: <input type="number" name="NumWebVisitsMonth" required></label>
+    <button type="submit">Predict Cluster</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('predictForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = Number(value));
+
+      try {
+        const response = await fetch('http://127.0.0.1:8000/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if(result.predicted_cluster !== undefined) {
+          document.getElementById('result').innerText = `Predicted cluster: ${result.predicted_cluster}`;
+        } else if(result.error) {
+          document.getElementById('result').innerText = `Error: ${result.error}`;
+        } else {
+          document.getElementById('result').innerText = `Unexpected response: ${JSON.stringify(result)}`;
+        }
+      } catch (error) {
+        document.getElementById('result').innerText = 'Failed to get prediction. Please check server.';
+      }
+    });
+  </script>
+</body>
+</html>

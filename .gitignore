@@ -1,0 +1,8 @@
+.env
+__pycache__/
+artifacts/*.pkl
+__pycache__/
+*.pyc
+.env.*
+*.pkl
+customer_categoriser/
