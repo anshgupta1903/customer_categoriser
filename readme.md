@@ -61,46 +61,7 @@ POST	/predict	Predict customer cluster
 
 
 # 📂 Project structure
-customer_categoriser/
-├── artifacts/ # ML artifacts (trained models, transformers)
-│ ├── model.pkl
-│ └── transformer.pkl
-├── customer_categoriser/ # Python virtual environment or local env (can be ignored in repo)
-│ ├── ~gboost/
-│ ├── etc/
-│ ├── Include/
-│ ├── Lib/
-│ ├── Scripts/
-│ ├── share/
-│ └── pyvenv.cfg
-├── frontend/ # Frontend (HTML app)
-│ ├── Dockerfile
-│ └── index.html
-├── notebooks/ # Jupyter notebooks & data exploration
-│ ├── data/
-│ ├── EDA.ipynb
-│ ├── Feature_engineering.ipynb
-│ ├── Feature_Selection_and_Modeling.ipynb
-│ └── marketing_campaign.ipynb
-├── src/ # Backend FastAPI app and ML pipeline
-│ ├── components/
-│ │ ├── data_ingestion.py
-│ │ ├── data_transformation.py
-│ │ ├── model_evaluation.py
-│ │ └── model_trainer.py
-│ ├── pipelines/
-│ │ ├── prediction_pipeline.py
-│ │ └── training_pipeline.py
-│ ├── utils/
-│ ├── app.py
-│ └── db.py
-├── .env # Environment variables
-├── .gitignore # Files/folders to ignore in git
-├── docker-compose.yml # Docker Compose file
-├── Dockerfile # Backend Dockerfile
-├── main.py # Entry script if needed
-├── requirements.txt # Python dependencies
-└── test.py # Test script
+<pre> ```plaintext 📦 customer_categoriser ├── artifacts/ # ML artifacts (trained models, transformers) │ ├── model.pkl │ └── transformer.pkl ├── customer_categoriser/ # Python virtual environment (should be ignored) │ ├── ~gboost/ │ ├── etc/ │ ├── Include/ │ ├── Lib/ │ ├── Scripts/ │ ├── share/ │ └── pyvenv.cfg ├── frontend/ # Frontend (HTML app) │ ├── Dockerfile │ └── index.html ├── notebooks/ # Jupyter notebooks & data exploration │ ├── data/ │ ├── EDA.ipynb │ ├── Feature_engineering.ipynb │ ├── Feature_Selection_and_Modeling.ipynb │ └── marketing_campaign.ipynb ├── src/ # Backend FastAPI app and ML pipeline │ ├── components/ │ │ ├── data_ingestion.py │ │ ├── data_transformation.py │ │ ├── model_evaluation.py │ │ └── model_trainer.py │ ├── pipelines/ │ │ ├── prediction_pipeline.py │ │ └── training_pipeline.py │ ├── utils/ │ ├── app.py │ └── db.py ├── .env # Environment variables ├── .gitignore # Files/folders to ignore in git ├── docker-compose.yml # Docker Compose file ├── Dockerfile # Backend Dockerfile ├── main.py # Entry script if needed ├── requirements.txt # Python dependencies └── test.py # Test script ``` </pre>
 
 
 # Author
