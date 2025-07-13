@@ -22,7 +22,7 @@ An end-to-end machine learning project to predict customer segments using FastAP
 
 ### 1 Clone this repo
 ```
-git clone https://github.com/yourusername/customer_categoriser.git
+git clone https://github.com/anshgupta1903/customer_categoriser/
 cd customer_categoriser
 ```
 
@@ -53,6 +53,17 @@ docker run --env-file .env -p 8000:8000 customer-segmentation-api
 
 ## Test with frontend Open index.html in your browser. Fill out the form → click Predict Cluster. See the predicted cluster below the form.
 
+# 🚀 Running locally (without Docker)
+### Start backend (FastAPI):
+
+uvicorn src.app:app --reload
+It will run on http://127.0.0.1:8000.
+
+### Start frontend:
+
+Open frontend/index.html directly in your browser.
+
+
 
 # API Endpoints
 Method	URL	Description
@@ -61,8 +72,48 @@ POST	/predict	Predict customer cluster
 
 
 # 📂 Project structure
-<pre> ```plaintext 📦 customer_categoriser ├── artifacts/ # ML artifacts (trained models, transformers) │ ├── model.pkl │ └── transformer.pkl ├── customer_categoriser/ # Python virtual environment (should be ignored) │ ├── ~gboost/ │ ├── etc/ │ ├── Include/ │ ├── Lib/ │ ├── Scripts/ │ ├── share/ │ └── pyvenv.cfg ├── frontend/ # Frontend (HTML app) │ ├── Dockerfile │ └── index.html ├── notebooks/ # Jupyter notebooks & data exploration │ ├── data/ │ ├── EDA.ipynb │ ├── Feature_engineering.ipynb │ ├── Feature_Selection_and_Modeling.ipynb │ └── marketing_campaign.ipynb ├── src/ # Backend FastAPI app and ML pipeline │ ├── components/ │ │ ├── data_ingestion.py │ │ ├── data_transformation.py │ │ ├── model_evaluation.py │ │ └── model_trainer.py │ ├── pipelines/ │ │ ├── prediction_pipeline.py │ │ └── training_pipeline.py │ ├── utils/ │ ├── app.py │ └── db.py ├── .env # Environment variables ├── .gitignore # Files/folders to ignore in git ├── docker-compose.yml # Docker Compose file ├── Dockerfile # Backend Dockerfile ├── main.py # Entry script if needed ├── requirements.txt # Python dependencies └── test.py # Test script ``` </pre>
 
-
+```plaintext
+customer_categoriser/
+├── artifacts/                   # ML artifacts (trained models, transformers)
+│   ├── model.pkl
+│   └── transformer.pkl
+├── customer_categoriser/        # Python virtual environment (should be ignored)
+│   ├── ~gboost/
+│   ├── etc/
+│   ├── Include/
+│   ├── Lib/
+│   ├── Scripts/
+│   ├── share/
+│   └── pyvenv.cfg
+├── frontend/                    # Frontend (HTML app)
+│   ├── Dockerfile
+│   └── index.html
+├── notebooks/                   # Jupyter notebooks & data exploration
+│   ├── data/
+│   ├── EDA.ipynb
+│   ├── Feature_engineering.ipynb
+│   ├── Feature_Selection_and_Modeling.ipynb
+│   └── marketing_campaign.ipynb
+├── src/                         # Backend FastAPI app and ML pipeline
+│   ├── components/
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   ├── model_evaluation.py
+│   │   └── model_trainer.py
+│   ├── pipelines/
+│   │   ├── prediction_pipeline.py
+│   │   └── training_pipeline.py
+│   ├── utils/
+│   ├── app.py
+│   └── db.py
+├── .env                         # Environment variables
+├── .gitignore                   # Files/folders to ignore in git
+├── docker-compose.yml           # Docker Compose file
+├── Dockerfile                   # Backend Dockerfile
+├── main.py                      # Entry script if needed
+├── requirements.txt             # Python dependencies
+└── test.py                      # Test script
+```
 # Author
 ## Ansh Gupta
